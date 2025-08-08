@@ -72,7 +72,7 @@ app.post("/create-short-link", async (req, res) => {
   });
   try {
     await urlMap.save();
-    const shortLinkUrl = `http://localhost:${PORT}/${code}`;
+    const shortLinkUrl = `${config.server_url}/${code}`;
     res.send({
       shortUrl: shortLinkUrl,
       originalUrl: destination,
