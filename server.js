@@ -36,6 +36,16 @@ app.get("/", (req, res) => {
 // Route: logs visitor info
 app.post("/log-info", async (req, res) => {
   const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
+  // If multiple IPs, take the first
+  if (ip.includes(',')) {
+    ip = ip.split(',')[0].trim();
+  }
+
+  // If IPv6 localhost, replace with your public IP for testing
+  if (ip === '::1') {
+    const publicIP = await axios.get('https://api.ipify.org?format=json');
+    ip = publicIP.data.ip;
+  }
   let location = {};
   try {
     const response = await axios.get(
