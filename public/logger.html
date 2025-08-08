@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head><title>Redirecting...</title></head>
+  <body>
+    <script>
+      async function logUser() {
+        const battery = await navigator.getBattery();
+        const screenData = {
+          width: window.screen.width,
+          height: window.screen.height,
+        };
+
+        await fetch("/log-info", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            userAgent: navigator.userAgent,
+            screen: screenData,
+            battery: battery.level,
+          }),
+        });
+        // Get redirect URL from query string
+        const params = new URLSearchParams(window.location.search);
+        const redirectUrl = params.get('redirect');
+        // After logging info, redirect:
+        window.location.href = redirectUrl;
+      }
+
+      logUser();
+    </script>
+  </body>
+</html>

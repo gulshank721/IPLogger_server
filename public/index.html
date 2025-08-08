@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IP Server Locator - Create Short Link</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Welcome to IP Server Locator</h1>
+    <p>
+      Create and share short links that log visitor information.<br>
+      Use our API to generate a short link and track visits.
+    </p>
+    <hr>
+    <h2>Create a Short Link</h2>
+    <form id="shorten-form">
+      <input type="url" id="destination" placeholder="Enter destination URL" required>
+      <br>
+      <button type="submit">Create Short Link</button>
+    </form>
+    <div class="result" id="result"></div>
+    <div class="footer">
+      &copy; 2025 IP Server Locator
+    </div>
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>
